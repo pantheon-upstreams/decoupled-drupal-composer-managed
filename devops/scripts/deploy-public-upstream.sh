@@ -59,7 +59,7 @@ done
 git commit -F /tmp/commit_message --author='Pantheon Automation <bot@getpantheon.com>'
 
 # Push to the public repository
-git push public main
+git push public public:main
 
 git checkout $CIRCLE_BRANCH
 
