@@ -14,7 +14,12 @@ jobs:
       # Add the ssh key for the pantheon-upstream user. The public ssh key
       # must be added to the CircleCI config, e.g.:
       #   https://app.circleci.com/settings/project/github/pantheon-systems/drupal-composer-managed/ssh
-      # Read this keypair from vault:
+      #
+      # Note that this user must have write access both to the source repo,
+      # pantheon-systems/drupal-composer-managed (to push the release-pointer
+      # tag) and to the target repo, pantheon-upstreams/drupal-composer-managed.
+      #
+      # Read the ssh keypair from vault:
       #   pvault production read secret/securenotes/pantheon-upstream_github_ssh_key
       # Or generate a new one via:
       #   ssh-keygen -m PEM -t rsa -C "your_email@example.com"
