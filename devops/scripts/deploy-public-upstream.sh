@@ -16,7 +16,7 @@ git checkout "${CIRCLE_BRANCH}"
 
 echo
 echo "-----------------------------------------------------------------------"
-echo "Preparing to release to $UPSTREAM_REPO_REMOTE_URL"
+echo "Preparing to release to upstream org"
 echo "-----------------------------------------------------------------------"
 echo
 
@@ -70,7 +70,7 @@ echo "Committing changes"
 git commit -F /tmp/commit_message --author='Pantheon Automation <bot@getpantheon.com>'
 
 echo
-echo "Releasing to $UPSTREAM_REPO_REMOTE_URL"
+echo "Releasing to upstream org"
 echo
 
 # Push to the public repository
