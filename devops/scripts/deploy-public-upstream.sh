@@ -14,6 +14,12 @@ git remote add public "$UPSTREAM_REPO_REMOTE_URL"
 git fetch public
 git checkout "${CIRCLE_BRANCH}"
 
+echo
+echo "-----------------------------------------------------------------------"
+echo "Preparing to release to $UPSTREAM_REPO_REMOTE_URL"
+echo "-----------------------------------------------------------------------"
+echo
+
 # List commits between release-pointer and HEAD, in reverse
 newcommits=$(git log release-pointer..HEAD --reverse --pretty=format:"%h")
 commits=()
@@ -52,15 +58,20 @@ for commit in "${commits[@]}"; do
     continue
   fi
   echo "Adding $commit:"
-  git log --format=%B -n 1 "$commit"
-  git cherry-pick -n "$commit" 2>&1
+  git --no-pager log --format=%B -n 1 "$commit"
+  git cherry-pick -rn "$commit" 2>&1
   # Product request - single commit per release
   # The commit message from the last commit will be used.
   git log --format=%B -n 1 "$commit" > /tmp/commit_message
   # git commit --amend --no-edit --author='Pantheon Automation <bot@getpantheon.com>'
 done
 
+echo "Committing changes"
 git commit -F /tmp/commit_message --author='Pantheon Automation <bot@getpantheon.com>'
+
+echo
+echo "Releasing to $UPSTREAM_REPO_REMOTE_URL"
+echo
 
 # Push to the public repository
 git push public public:main
