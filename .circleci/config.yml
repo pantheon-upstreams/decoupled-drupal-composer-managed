@@ -35,6 +35,9 @@ jobs:
       - run:
           name: Copy commits to destination repo
           command: devops/scripts/deploy-public-upstream.sh
+      - run:
+          name: Apply patch and copy commits to decoupled destination repo
+          command: devops/scripts/deploy-decoupled-upstream.sh
   check-commits:
     executor: deployer
     steps:
@@ -42,6 +45,13 @@ jobs:
       - run:
           name: Check validity of commits in PR
           command: devops/scripts/check-commits.sh
+  check-patch:
+    executor: deployer
+    steps:
+      - checkout
+      - run:
+          name: Check that patch file applies without errors
+          command: devops/scripts/check-patch.sh
 
 workflows:
   version: 2
@@ -55,3 +65,6 @@ workflows:
   check-commits:
     jobs:
       - check-commits
+  check-patch:
+    jobs:
+      - check-patch
