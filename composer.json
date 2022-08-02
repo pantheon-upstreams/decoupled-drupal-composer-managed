@@ -1,5 +1,5 @@
 {
-    "name": "pantheon-upstreams/drupal-composer-managed",
+    "name": "pantheon-upstreams/decoupled-drupal-composer-managed",
     "description": "Install Drupal 9 with Composer on Pantheon.",
     "type": "project",
     "license": "MIT",
@@ -18,6 +18,8 @@
         "composer/installers": "^1.9",
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core-recommended": "^9.2",
+        "drupal/pantheon_decoupled_profile": "^1.0",
+        "drupal/pantheon_decoupled_umami_demo": "^1.0",
         "pantheon-systems/drupal-integrations": "^9",
         "cweagans/composer-patches": "^1.7",
         "drush/drush": "^11 || ^12"
@@ -28,7 +30,7 @@
     "conflict": {
             "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "alpha",
     "prefer-stable": true,
     "extra": {
         "drupal-scaffold": {
