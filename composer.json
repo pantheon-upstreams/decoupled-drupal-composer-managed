@@ -20,6 +20,8 @@
         "drupal/core-recommended": "^9.2",
         "drupal/pantheon_decoupled_profile": "^1.0",
         "drupal/pantheon_decoupled_umami_demo": "^1.0",
+        "drupal/pantheon_decoupled_profile": "^1.0",
+        "drupal/pantheon_decoupled_umami_demo": "^1.0",
         "pantheon-systems/drupal-integrations": "^9",
         "cweagans/composer-patches": "^1.7",
         "drush/drush": "^11 || ^12"
